@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>AutoCheckin System</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <h1> AutoCheckin System</h1>
+    </head>
+    
+    <body>
+        <body>
+            <label class="switch">
+                <input type="checkbox" id="modeSwitch">
+                <span class="slider"></span>
+                <p class="mode-label">Light/Dark Mode</p>
+            </label>
+    <script>
+        const modeSwitch = document.getElementById('modeSwitch');
+        const body = document.body;
+        modeSwitch.addEventListener('change', () => {
+        if (modeSwitch.checked) {
+            darkMode();
+        } else {
+            lightMode();
+        }
+});
+        async function darkMode() {
+            let element = document.body;
+            let content = document.getElementById("DarkModetext");
+            element.className = "dark-mode";
+            content.innerText = "Dark Mode is ON";
+        }
+        async function lightMode() {
+            let element = document.body;
+            let content = document.getElementById("DarkModetext");
+            element.className = "light-mode";
+            content.innerText = "Dark Mode is OFF";
+        }
+    </script>
+    <div>
+        <form>
+            <h2>Login</h2>
+            <p>
+                <label for="username">Email:</label>
+                <input class="form">
+            </p>
+            <p>
+                <label for="password">Password:</label>
+                <input class="form">
+            </p>
+            <p>
+                <input type="submit" class="form">
+                <input type="button" class="form" value="Register" onclick="location.href='register.html'">
+            </p>
+        </form>
+    </div>
+</body>
+</html>
+    </body> 
+</html>

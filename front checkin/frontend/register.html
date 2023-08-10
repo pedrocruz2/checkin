@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>AutoCheckin System</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <h1> AutoCheckin System</h1>
+    </head>
+    
+    <body>
+        <body>
+            <label class="switch">
+                <input type="checkbox" id="modeSwitch">
+                <span class="slider"></span>
+            </label>
+    <script>
+        const modeSwitch = document.getElementById('modeSwitch');
+        const body = document.body;
+        modeSwitch.addEventListener('change', () => {
+        if (modeSwitch.checked) {
+            darkMode();
+        } else {
+            lightMode();
+        }
+});
+        async function darkMode() {
+            let element = document.body;
+            let content = document.getElementById("DarkModetext");
+            element.className = "dark-mode";
+            content.innerText = "Dark Mode is ON";
+        }
+        async function lightMode() {
+            let element = document.body;
+            let content = document.getElementById("DarkModetext");
+            element.className = "light-mode";
+            content.innerText = "Dark Mode is OFF";
+        }
+    </script>
+    <div>
+        <form>
+            <h2>Register</h2>
+            <p>
+                <label for="username">Email:</label>
+                <input class="form" id="email">
+            </p>
+            <p>
+                <label for="password">Password:</label>
+                <input class="form" id="senha">
+            </p>
+            <p>
+                <input type="submit" class="form" onclick="registrarUsuario()">
+            </p>
+        </form>
+    </div>
+    <script> 
+    function registrarUsuario(){
+    var data = {
+    email: document.getElementById('email').value,
+    senha: document.getElementById('senha').value
+    }
+    fetch('http://localhost:6969/register', {
+    // Registra usuário na database
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+        .then(response => response.json())
+        .then(data => { })
+        .catch(err => console.log(err));    
+}</script>
+</body>
+</html>
