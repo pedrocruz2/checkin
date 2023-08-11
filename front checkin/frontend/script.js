@@ -15,13 +15,18 @@ fetch('http://localhost:6969/register', {
         .then(data => {})
         .catch(err => console.log(err));    
 }
-var dataLogin = {
-    email: document.getElementById('usernameLogin').value,
-    senha: document.getElementById('passwordLogin').value
-};
+
 
 function verifyLogin() {
-    fetch('http://localhost:6969/verify', { // presumindo que /login é o endpoint correto
+    // Coletando os dados do formulário (assumindo que os IDs dos inputs são 'usernameLogin' e 'passwordLogin')
+    const dataLogin = {
+        email: document.getElementById('usernameLogin').value,
+        senha: document.getElementById('passwordLogin').value
+    };
+
+    console.log(dataLogin);
+
+    fetch('http://localhost:6969/verify', {
         method: 'POST',
         body: JSON.stringify(dataLogin),
         headers: {
@@ -29,18 +34,17 @@ function verifyLogin() {
         }
     })
     .then(response => {
-        if (response.status === 200) {
+        if (response.ok) {
             return response.json();
         } else {
             throw new Error('Erro de autenticação');
         }
     })
     .then(data => {
-        // Aqui você pode redirecionar o usuário para outra página ou atualizar a UI
-        // Por exemplo: window.location.href = "/dashboard";
+        console.log(data);
     })
     .catch(err => {
-        console.log(err);
+        console.error(err);
         // Aqui, você pode informar o usuário sobre um erro de login, por exemplo, através de uma mensagem na tela.
     });
 }
